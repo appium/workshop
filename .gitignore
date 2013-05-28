@@ -1,1 +1,4 @@
 node_modules/
+apps/*.zip
+apps/*.app*
+apps/*.apk
