@@ -21,6 +21,7 @@
   ],
   "main": "./example.js",
   "dependencies": {
+    "appium": "~0.6.0",
     "underscore": "~1.4.4",
     "path": "~0.4.9",
     "wd-series": "~0.1.2",
