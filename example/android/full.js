@@ -2,8 +2,7 @@ var wd = require("wd")
   , driverSeries = require("wd-series")
   , path = require("path")
   , assert = require("assert")
-  , app = path.resolve(__dirname, "../../../../AndroidStudioProjects/SauceDashboard/SauceDashboard/build/apk/SauceDashboard-debug-unaligned.apk");
-//"http://appium.s3.amazonaws.com/SauceDashboard.apk";
+  , app = path.resolve(__dirname, "../../SauceDashboard.apk");
 
 // Instantiate a new driver session
 var driver = wd.remote("localhost", 4723);

@@ -27,7 +27,7 @@ describe("Login popup", function() {
       function() { this.elementByTagName("alert");  },
       function() { this.res.elementsByTagName("textfield"); },
       function() { 
-        this.res.should.exist();
+        should.not.exist(this.res);
         this.next();
       }
     ], function() { 

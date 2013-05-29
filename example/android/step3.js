@@ -3,8 +3,7 @@ var wd = require("wd")
   , path = require("path")
   , assert = require("assert")
   , should = require("should")
-  , app = path.resolve(__dirname, "../../../../AndroidStudioProjects/SauceDashboard/SauceDashboard/build/apk/SauceDashboard-debug-unaligned.apk");
-//"http://appium.s3.amazonaws.com/SauceDashboard.apk";
+  , app = path.resolve(__dirname, "../../SauceDashboard.apk");
 
 // Instantiate a new driver session
 var driver = wd.remote("localhost", 4723);
@@ -28,7 +27,7 @@ describe("Login popup", function() {
       function() { this.init(desiredCaps); },
       function() { this.setImplicitWaitTimeout(10000); },
       function() { this.elementByName("userName"); },
-      function() { this.res.should.exist(); this.next(); }
+      function() { should.not.exist(this.res); this.next(); }
     ], function() {
       driver.quit();
       done();
@@ -47,11 +46,11 @@ describe("Login popup", function() {
       function() { this.sleep(7); },
       function() { this.elementByName("jobList")},
       function() { 
-        this.res.should.exist();
+        should.not.exist(this.res);
         this.res.elementByTagName('relative');
       },
       function() { 
-        this.res.should.exist();
+        should.not.exist(this.res);
         this.res.length.should.not.equal(0);
       }
     ], function() {
@@ -86,7 +85,7 @@ describe("Job view", function() {
         },
         function() { this.cell.click(); },
         function() { this.elementByName("osName"); },
-        function() { this.res.should.exist(); }
+        function() { should.not.exist(this.res); }
       ])}
     ], function() { 
       driver.quit() 

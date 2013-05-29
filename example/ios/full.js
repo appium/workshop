@@ -2,8 +2,8 @@ var wd = require("wd")
   , driverSeries = require("wd-series")
   , path = require("path")
   , assert = require("assert")
-  , app = "http://appium.s3.amazonaws.com/SauceDashboard.app.zip";
-
+  , shold = require("should")
+  , app = path.resolve(__dirname, "../../apps/SauceDashboard.app.zip");
 
 // Instantiate a new driver session
 var driver = wd.remote("localhost", 4723);

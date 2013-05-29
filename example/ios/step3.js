@@ -46,7 +46,7 @@ describe("Job view", function() {
         function() { this.cell.click(); },
         function() { this.sleep(3); },
         function() { this.elementByTagName('text'); },
-        function() { this.res.should.exist(); this.next(); }
+        function() { should.not.exist(this.res); this.next(); }
       ])}
     ], function() { 
       driver.quit() 
@@ -66,11 +66,11 @@ describe("Job view", function() {
         function() { this.cell.click(); },
         function() { this.sleep(3); },
         function() { this.elementByTagName('text'); },
-        function() { this.res.should.exist(); this.next(); },
+        function() { should.not.exist(this.res); this.next(); },
         function() { this.back(); },
         function() { this.sleep(3); },
         function() { this.elementsByTagName("cell"); },
-        function() { this.res.should.exist(); }
+        function() { should.not.exist(this.res); }
       ])}
     ], function() { 
       driver.quit() 
@@ -111,11 +111,11 @@ describe("Job view", function() {
         function() { this.cell.click(); },
         function() { this.sleep(3); },
         function() { this.elementByTagName('text'); },
-        function() { this.res.should.exist(); },
+        function() { should.not.exist(this.res); },
         function() { this.windowHandles(); },
         function() { this.window(this.res[0]); },
         function() { this.title(); },
-        function() { this.res.should.exist(); this.next(); },
+        function() { should.not.exist(this.res); this.next(); },
         function() { this.execute("mobile: leaveWebView"); }
       ])}
     ], function() { 
