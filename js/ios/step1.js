@@ -9,14 +9,16 @@ var wd = require("wd")
 var driver = wd.remote("localhost", 4723);
 
 var desiredCaps = {
-    device: ""
+    device: "iPhone Simulator"
     , name: "Appium: with WD"
-    , platform: "Mac"
+    , platform: "Mac 10.8"
     , app: app
-    , version: "6.0"
-    , browserName: "iOS"
+    , version: "6.1"
     , newCommandTimeout: 60
 };
+
+var username = process.env.SAUCE_USERNAME
+    , password = process.env.SAUCE_PASSWORD;
 
 //Run the test
 describe("Login popup", function() {
@@ -27,10 +29,11 @@ describe("Login popup", function() {
       function() { this.elementByTagName("alert");  },
       function() { this.res.elementsByTagName("textfield"); },
       function() { 
-        should.not.exist(this.res);
+        this.res.should.not.be.empty;
         this.next();
       }
-    ], function() { 
+    ], function(err) {
+      should.not.exist(err);
       driver.quit();
       done();
     });

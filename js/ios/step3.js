@@ -9,24 +9,26 @@ var wd = require("wd")
 var driver = wd.remote("localhost", 4723);
 
 var desiredCaps = {
-    device: ""
+    device: "iPhone Simulator"
     , name: "Appium: with WD"
-    , platform: "Mac"
+    , platform: "Mac 10.8"
     , app: app
-    , version: "6.0"
-    , browserName: "iOS"
+    , version: "6.1"
     , newCommandTimeout: 60
 };
+
+var username = process.env.SAUCE_USERNAME
+    , password = process.env.SAUCE_PASSWORD;
 
 var login = [
   function() { this.elementByTagName("alert");  },
   function() { this.res.elementsByTagName("textfield"); },
   function() { 
     this.fields = this.res;
-    this.fields[0].sendKeys("AppiumUser"); 
+    this.fields[0].sendKeys(username); 
   },
   function() { this.elementByTagName("secure"); },
-  function() { this.res.sendKeys("appiumrocks"); },
+  function() { this.res.sendKeys(password); },
   function() { this.elementByName("Sign In"); },
   function() { this.res.click(); },
   function() { this.sleep(10); },
@@ -46,9 +48,9 @@ describe("Job view", function() {
         function() { this.cell.click(); },
         function() { this.sleep(3); },
         function() { this.elementByTagName('text'); },
-        function() { should.not.exist(this.res); this.next(); }
       ])}
-    ], function() { 
+    ], function(err) {
+      should.not.exist(err); 
       driver.quit() 
       done();
     });
@@ -66,13 +68,13 @@ describe("Job view", function() {
         function() { this.cell.click(); },
         function() { this.sleep(3); },
         function() { this.elementByTagName('text'); },
-        function() { should.not.exist(this.res); this.next(); },
         function() { this.back(); },
         function() { this.sleep(3); },
         function() { this.elementsByTagName("cell"); },
-        function() { should.not.exist(this.res); }
+        function() { this.res.should.not.be.empty; }
       ])}
-    ], function() { 
+    ], function(err) {
+      should.not.exist(err);
       driver.quit() 
       done();
     });
@@ -93,7 +95,8 @@ describe("Job view", function() {
           this.execute("mobile: swipe", [swipeOpts])
         },
       ])}
-    ], function() { 
+    ], function(err) {
+      should.not.exist(err); 
       driver.quit() 
       done();
     });
@@ -111,14 +114,13 @@ describe("Job view", function() {
         function() { this.cell.click(); },
         function() { this.sleep(3); },
         function() { this.elementByTagName('text'); },
-        function() { should.not.exist(this.res); },
         function() { this.windowHandles(); },
         function() { this.window(this.res[0]); },
         function() { this.title(); },
-        function() { should.not.exist(this.res); this.next(); },
         function() { this.execute("mobile: leaveWebView"); }
       ])}
-    ], function() { 
+    ], function(err) {
+      should.not.exist(err);
       driver.quit() 
       done();
     });

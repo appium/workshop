@@ -9,14 +9,16 @@ var wd = require("wd")
 var driver = wd.remote("localhost", 4723);
 
 var desiredCaps = {
-    device: ""
+    device: "iPhone Simulator"
     , name: "Appium: with WD"
-    , platform: "Mac"
+    , platform: "Mac 10.8"
     , app: app
-    , version: "6.0"
-    , browserName: "iOS"
+    , version: "6.1"
     , newCommandTimeout: 60
 };
+
+var username = process.env.SAUCE_USERNAME
+    , password = process.env.SAUCE_PASSWORD;
 
 //Run the test
 driverSeries(driver, [
@@ -26,15 +28,15 @@ driverSeries(driver, [
   function() { this.res.elementsByTagName("textfield"); },
   function() { 
     this.fields = this.res;
-    this.fields[0].sendKeys("AppiumUser"); 
+    this.fields[0].sendKeys(username); 
   },
   function() { this.elementByTagName("secure"); },
-  function() { this.res.sendKeys("appiumrocks"); },
+  function() { this.res.sendKeys(password); },
   function() { this.elementByName("Sign In"); },
   function() { this.res.click(); },
   function() { this.sleep(10); },
   function() { this.elementsByTagName("cell"); },
-  function() { 
+  function() {
     this.cell = this.res[1];
     this.next();
   },
