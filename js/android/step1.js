@@ -16,7 +16,7 @@ var desiredCaps = {
     , version: "4.2"
     , newCommandTimeout: 60
     , 'app-package': "com.saucelabs.saucedashboard"
-    , 'app-activity': "DashActivity"
+    , 'app-activity': "CredentialsActivity"
 };
 
 var username = process.env.SAUCE_USERNAME
