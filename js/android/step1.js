@@ -3,7 +3,7 @@ var wd = require("wd")
   , path = require("path")
   , assert = require("assert")
   , should = require("should")
-  , app = path.resolve(__dirname, "../../SauceDashboard.apk");
+  , app = path.resolve(__dirname, "../../apps/SauceDashboard.apk");
 
 // Instantiate a new driver session
 var driver = wd.remote("localhost", 4723);
@@ -29,8 +29,8 @@ describe("Login popup", function() {
       function() { this.init(desiredCaps); },
       function() { this.setImplicitWaitTimeout(10000); },
       function() { this.elementByName("userName"); },
-      function() { should.not.exist(this.res); this.next(); }
-    ], function() {
+    ], function(err) {
+      should.not.exist(err);
       driver.quit();
       done();
     });

@@ -3,7 +3,7 @@ var wd = require("wd")
   , path = require("path")
   , assert = require("assert")
   , should = require("should")
-  , app = path.resolve(__dirname, "../../SauceDashboard.apk");
+  , app = path.resolve(__dirname, "../../apps/SauceDashboard.apk");
 
 // Instantiate a new driver session
 var driver = wd.remote("localhost", 4723);
@@ -29,18 +29,18 @@ describe("Login popup", function() {
       function() { this.init(desiredCaps); },
       function() { this.setImplicitWaitTimeout(10000); },
       function() { this.elementByName("userName"); },
-      function() { should.not.exist(this.res); this.next(); }
-    ], function() {
+    ], function(err) {
+      should.not.exist(err);
       driver.quit();
       done();
     });
   });
-  it("should login", function(done) {
+  it.only("should login", function(done) {
     driverSeries(driver, [
       function() { this.init(desiredCaps); },
       function() { this.setImplicitWaitTimeout(10000); },
-      function() { this.elementByName(username); },
-      function() { this.res.type("AppiumUser"); },
+      function() { this.elementByName("userName"); },
+      function() { this.res.type(username); },
       function() { this.elementByName("userPassword"); },
       function() { this.res.type(password); },
       function() { this.elementByTagName("button"); },
@@ -48,14 +48,14 @@ describe("Login popup", function() {
       function() { this.sleep(7); },
       function() { this.elementByName("jobList")},
       function() { 
-        should.not.exist(this.res);
-        this.res.elementByTagName('relative');
+        this.res.elementsByTagName('relative');
       },
-      function() { 
-        should.not.exist(this.res);
+      function() {
         this.res.length.should.not.equal(0);
+        this.next();
       }
-    ], function() {
+    ], function(err) {
+      should.not.exist(err);
       driver.quit();
       done();
     });

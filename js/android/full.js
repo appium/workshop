@@ -2,7 +2,7 @@ var wd = require("wd")
   , driverSeries = require("wd-series")
   , path = require("path")
   , assert = require("assert")
-  , app = path.resolve(__dirname, "../../SauceDashboard.apk");
+  , app = path.resolve(__dirname, "../../apps/SauceDashboard.apk");
 
 // Instantiate a new driver session
 var driver = wd.remote("localhost", 4723);
