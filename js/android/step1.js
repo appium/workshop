@@ -10,8 +10,8 @@ var driver = wd.remote("localhost", 4723);
 
 var desiredCaps = {
     name: "Appium: with WD"
-    , browserName: ""
-    , platform: "Android"
+    , platform: "Linux"
+    , device: "Android"
     , app: app
     , version: "4.2"
     , newCommandTimeout: 60
@@ -19,6 +19,8 @@ var desiredCaps = {
     , 'app-activity': "DashActivity"
 };
 
+var username = process.env.SAUCE_USERNAME
+    , password = process.env.SAUCE_PASSWORD;
 
 //Run the test
 describe("Login popup", function() {

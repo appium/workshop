@@ -9,8 +9,8 @@ var driver = wd.remote("localhost", 4723);
 
 var desiredCaps = {
     name: "Appium: with WD"
-    , browserName: ""
-    , platform: "Android"
+    , platform: "Linux"
+    , device: "Android"
     , app: app
     , version: "4.2"
     , newCommandTimeout: 60
@@ -18,15 +18,17 @@ var desiredCaps = {
     , 'app-activity': "DashActivity"
 };
 
+var username = process.env.SAUCE_USERNAME
+    , password = process.env.SAUCE_PASSWORD;
 
 //Run the test
 driverSeries(driver, [
   function() { this.init(desiredCaps); },
   function() { this.setImplicitWaitTimeout(10000); },
   function() { this.sleep(3); },
-  function() { this.elementByName("userName"); },
+  function() { this.elementByName(username); },
   function() { this.res.type("AppiumUser"); },
-  function() { this.elementByName("userPassword"); },
+  function() { this.elementByName(password); },
   function() { this.res.type("appiumrocks"); },
   function() { this.elementByTagName("button"); },
   function() { this.res.click(); },
@@ -38,7 +40,6 @@ driverSeries(driver, [
   },
   function() { 
     this.cell = this.res[1];
-    console.log(this.res);
     this.next()
   },
   function() { this.cell.click(); },
