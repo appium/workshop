@@ -24,4 +24,5 @@ Install dependencies
 ```bash
 npm install -g mocha  # get mocha globally
 npm install .  # install npm deps for the workshop
+./apps/download.sh
 ```
