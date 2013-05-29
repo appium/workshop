@@ -16,7 +16,8 @@ var desiredCaps = {
     , version: "4.2"
     , newCommandTimeout: 60
     , 'app-package': "com.saucelabs.saucedashboard"
-    , 'app-activity': "CredentialsActivity"
+    , 'app-activity': "DashActivity"
+    , 'app-wait-activity': "CredentialsActivity"
 };
 
 var username = process.env.SAUCE_USERNAME
@@ -31,8 +32,9 @@ describe("Login popup", function() {
       function() { this.elementByName("userName"); },
     ], function(err) {
       should.not.exist(err);
-      driver.quit();
-      done();
+      driver.quit(function(err) {
+        done();
+      })
     });
   });
 });

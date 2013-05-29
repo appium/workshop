@@ -16,7 +16,8 @@ var desiredCaps = {
     , version: "4.2"
     , newCommandTimeout: 60
     , 'app-package': "com.saucelabs.saucedashboard"
-    , 'app-activity': "CredentialsActivity"
+    , 'app-wait-activity': "CredentialsActivity"
+    , 'app-activity': "DashActivity"
 };
 
 var username = process.env.SAUCE_USERNAME
@@ -31,8 +32,9 @@ describe("Login popup", function() {
       function() { this.elementByName("userName"); },
     ], function(err) {
       should.not.exist(err);
-      driver.quit();
-      done();
+      driver.quit(function(err) { 
+        done();
+      });
     });
   });
   it("should login", function(done) {
@@ -56,8 +58,9 @@ describe("Login popup", function() {
       }
     ], function(err) {
       should.not.exist(err);
-      driver.quit();
-      done();
+      driver.quit(function(err) { 
+        done();
+      });
     });
   });
 });
@@ -90,8 +93,9 @@ describe("Job view", function() {
       ])}
     ], function(err) {
       should.not.exist(err);
-      driver.quit() 
-      done();
+      driver.quit(function() {
+        done();
+      });
     });
   });
 });
