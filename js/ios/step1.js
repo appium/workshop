@@ -34,8 +34,9 @@ describe("Login popup", function() {
       }
     ], function(err) {
       should.not.exist(err);
-      driver.quit();
-      done();
+      driver.quit(function() {
+        done();
+      });
     });
   });
 });

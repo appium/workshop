@@ -32,7 +32,7 @@ describe("Login popup", function() {
       function() { this.elementByName("userName"); },
     ], function(err) {
       should.not.exist(err);
-      driver.quit(function() {
+      driver.quit(function(err) {
         done();
       });
     });

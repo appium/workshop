@@ -51,8 +51,9 @@ describe("Job view", function() {
       ])}
     ], function(err) {
       should.not.exist(err); 
-      driver.quit() 
-      done();
+      driver.quit(function(err) {
+        done();
+      });
     });
   });
   it("Should go back", function(done) {
@@ -75,8 +76,9 @@ describe("Job view", function() {
       ])}
     ], function(err) {
       should.not.exist(err);
-      driver.quit() 
-      done();
+      driver.quit(function(err) {
+        done();
+      });
     });
   });
   it("Should swype", function(done) {
@@ -97,8 +99,9 @@ describe("Job view", function() {
       ])}
     ], function(err) {
       should.not.exist(err); 
-      driver.quit() 
-      done();
+      driver.quit(function(err) {
+        done();
+      });
     });
   });
   it("Should go back", function(done) {
@@ -121,8 +124,9 @@ describe("Job view", function() {
       ])}
     ], function(err) {
       should.not.exist(err);
-      driver.quit() 
-      done();
+      driver.quit(function(err) {
+        done();
+      });
     });
   });
 });

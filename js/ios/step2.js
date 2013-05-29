@@ -33,8 +33,9 @@ describe("Login popup", function() {
         this.next();
       }
     ], function() { 
-      driver.quit();
-      done();
+      driver.quit(function(err) {
+        done();
+      });
     });
   });
   it.only("should login", function(done) {
@@ -58,8 +59,9 @@ describe("Login popup", function() {
         this.next();
       }], function(err) {
         should.not.exist(err);
-        driver.quit();
-        done();
+        driver.quit(function(err) {
+          done();
+        });
       });
   });
 });
