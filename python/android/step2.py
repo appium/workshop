@@ -24,8 +24,4 @@ class AppiumAndroidTestCase(AppiumTestCase):
         password = self.driver.find_element_by_name("userPassword")
         password.send_keys(self.password)
         self.driver.find_element_by_tag_name("button").click()
-        jobs = self.driver.find_element_by_name("jobList")
-        jobs = jobs.find_elements_by_tag_name("relative")
-        jobs[1].click()
-        osName = self.driver.find_element_by_name("osName").text
-        self.assertGreater(len(osName), 0)
+        self.driver.find_element_by_name("jobList")

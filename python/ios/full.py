@@ -16,6 +16,13 @@ class AppiumIOSTestCase(AppiumTestCase):
         AppiumTestCase.setUp(self)
 
     def test_iphone_app(self):
-        alert = self.driver.find_element_by_tag_name("alert")
-        fields = alert.find_elements_by_tag_name("textfield")
-        self.assertGreater(len(fields), 0)
+        uname = self.driver.find_element_by_name("userName")
+        uname.send_keys(self.username)
+        password = self.driver.find_element_by_name("userPassword")
+        password.send_keys(self.password)
+        self.driver.find_element_by_tag_name("button").click()
+        #jobs = self.driver.find_element_by_name("jobList")
+        #jobs = jobs.find_elements_by_tag_name("relative")
+        #jobs[1].click()
+        #osName = self.driver.find_element_by_name("osName").text
+        #self.assertGreater(len(osName), 0)
