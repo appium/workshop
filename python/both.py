@@ -9,16 +9,13 @@ class AppiumCrossPlatformTestCase(AppiumTestCase):
 
     def setUp(self):
         AppiumTestCase.setUp(self)
-        self.elements = {
-            'job_table': {'ios': 'table', 'android': 'relative'},
-        }
 
     def test_cross_platform_app(self):
         uname = self.driver.find_element_by_name("userName")
         uname.send_keys(self.username)
         password = self.driver.find_element_by_name("userPassword")
         password.send_keys(self.password)
-        #self.driver.find_element_by_tag_name("button").click()
+        self.driver.find_element_by_tag_name("button").click()
         #jobs = self.driver.find_element_by_name("jobList")
         #job_table_locator = self.elements['job_table'][self.device]
         #jobs = jobs.find_elements_by_tag_name(job_table_locator)

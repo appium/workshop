@@ -21,4 +21,3 @@ class AppiumIOSTestCase(AppiumTestCase):
         password = self.driver.find_element_by_name("userPassword")
         password.send_keys("badpassword")
         self.driver.find_element_by_tag_name("button").click()
-        self.driver.switch_to_alert().accept()
