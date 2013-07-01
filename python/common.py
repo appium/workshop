@@ -11,7 +11,8 @@ class AppiumTestCase(unittest.TestCase):
         self.password = os.environ.get('SAUCE_PASSWORD')
         appium = "http://localhost:%s/wd/hub" % 4723
         self.desired_caps.update({
-            'name': 'Appium Android Test',
+            'name': getattr(self, '_testMethodName',
+                            self.name).replace('_', ' ').capitalize(),
             'newCommandTimeout': 60
         })
         print self.desired_caps
