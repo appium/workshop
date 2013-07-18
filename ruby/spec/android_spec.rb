@@ -42,6 +42,7 @@ describe 'An Android Contacts App' do
         checkbox = @driver.find_element(:xpath, '//checkBox')
         checkbox.click
         checkbox.text.should eq 'Show Invisible Contacts (Only)'
+        button = @driver.find_element(:xpath, '//button[contains(@text, "ello")')
     end
 end
 

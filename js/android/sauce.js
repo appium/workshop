@@ -1,4 +1,4 @@
-var wd = require("wd") 
+var wd = require("wd")
   , driverSeries = require("wd-series")
   , path = require("path")
   , assert = require("assert")
@@ -21,8 +21,8 @@ var desiredCaps = {
     , version: "4.2"
     , newCommandTimeout: 60
     , 'app-package': "com.saucelabs.saucedashboard"
-    , 'app-wait-activity': "CredentialsActivity"
-    , 'app-activity': "DashActivity"
+    , 'app-wait-activity': ".CredentialsActivity"
+    , 'app-activity': ".DashActivity"
 };
 
 //Run the test
@@ -34,7 +34,7 @@ describe("Login popup", function() {
       function() { this.elementByName("userName"); },
     ], function(err) {
       should.not.exist(err);
-      driver.quit(function(err) { 
+      driver.quit(function(err) {
         done();
       });
     });
@@ -51,16 +51,16 @@ describe("Login popup", function() {
       function() { this.res.click(); },
       function() { this.sleep(7); },
       function() { this.elementByName("jobList")},
-      function() { 
+      function() {
         this.res.elementsByTagName('relative');
       },
-      function() { 
+      function() {
         this.res.should.not.be.empty;
         this.next();
       }
     ], function(err) {
       should.not.exist(err);
-      driver.quit(function(err) { 
+      driver.quit(function(err) {
         done();
       });
     });
@@ -86,7 +86,7 @@ describe("Job view", function() {
       function() { this.iff(login, [
         function() { this.elementByName("jobList")},
         function() { this.res.elementsByTagName('relative'); },
-        function() { 
+        function() {
           this.cell = this.res[1];
           this.next()
         },

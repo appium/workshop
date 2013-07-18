@@ -1,4 +1,4 @@
-var wd = require("wd") 
+var wd = require("wd")
   , driverSeries = require("wd-series")
   , path = require("path")
   , assert = require("assert")
@@ -16,8 +16,8 @@ var desiredCaps = {
     , version: "4.2"
     , newCommandTimeout: 60
     , 'app-package': "com.saucelabs.saucedashboard"
-    , 'app-activity': "DashActivity"
-    , 'app-wait-activity': "CredentialsActivity"
+    , 'app-activity': ".DashActivity"
+    , 'app-wait-activity': ".CredentialsActivity"
 };
 
 var username = process.env.SAUCE_USERNAME
@@ -49,7 +49,7 @@ describe("Login popup", function() {
       function() { this.res.click(); },
       function() { this.sleep(7); },
       function() { this.elementByName("jobList")},
-      function() { 
+      function() {
         this.res.elementsByTagName('relative');
       },
       function() {
