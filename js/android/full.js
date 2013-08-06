@@ -18,18 +18,18 @@ var desiredCaps = {
     , 'app-activity': ".DashActivity"
 };
 
-var username = process.env.SAUCE_USERNAME
-    , password = process.env.SAUCE_PASSWORD;
+var username = process.env.SAUCE_USERNAME || "AppiumUser"
+    , password = process.env.SAUCE_PASSWORD || "appiumrocks";
 
 //Run the test
 driverSeries(driver, [
   function() { this.init(desiredCaps); },
   function() { this.setImplicitWaitTimeout(10000); },
   function() { this.sleep(3); },
-  function() { this.elementByName(username); },
-  function() { this.res.type("AppiumUser"); },
-  function() { this.elementByName(password); },
-  function() { this.res.type("appiumrocks"); },
+  function() { this.elementByName('userName'); },
+  function() { this.res.type(username); },
+  function() { this.elementByName('userPassword'); },
+  function() { this.res.type(password); },
   function() { this.elementByTagName("button"); },
   function() { this.res.click(); },
   function() { this.sleep(7); },
