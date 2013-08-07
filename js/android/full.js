@@ -15,6 +15,7 @@ var desiredCaps = {
     , version: "4.2"
     , newCommandTimeout: 60
     , 'app-package': "com.saucelabs.saucedashboard"
+    , 'app-wait-activity': ".CredentialsActivity"
     , 'app-activity': ".DashActivity"
 };
 
