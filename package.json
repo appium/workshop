@@ -27,7 +27,8 @@
     "mocha": "~1.10.0",
     "should": "~1.2.2",
     "wd": "~0.0.32",
-    "saucelabs": "~0.0.9"
+    "saucelabs": "~0.0.9",
+    "monocle-js": "0.1.7"
   }
 }
 
