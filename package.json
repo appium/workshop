@@ -7,7 +7,7 @@
     "appium",
     "demos"
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "appium-discuss@googlegroups.com",
   "repository": {
     "type": "git",
@@ -21,10 +21,9 @@
   ],
   "main": "./example.js",
   "dependencies": {
-    "appium": "~0.6.0",
     "underscore": "~1.4.4",
     "path": "~0.4.9",
-    "wd-series": "~0.1.2",
+    "yiewd": "~0.0.15",
     "mocha": "~1.10.0",
     "should": "~1.2.2",
     "wd": "~0.0.32",
