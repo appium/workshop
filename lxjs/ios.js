@@ -34,10 +34,13 @@ driver.init(desiredCaps, function() {
             label.text(function(err, txt) {
               var actual = parseInt(txt, 10);
               assert.equal(sum, actual);
+              driver.quit(function() {
+                console.log("We're done!");
+              });
             });
           });
         });
       });
     });
   });
-})
+});
