@@ -1,6 +1,8 @@
 Appium JS Workshop repo
 ========
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/appium/workshop.svg)](https://greenkeeper.io/)
+
 To be used when people do Appium workshops.
 
 Setup
